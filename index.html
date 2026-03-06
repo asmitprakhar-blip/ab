@@ -310,101 +310,93 @@
           <div class="flex flex-wrap gap-3 text-sm font-bold filter-buttons">
             <button data-filter="all"
               class="px-6 py-3 rounded-full bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all hover:scale-105">All</button>
-            <button data-filter="meal-plans"
-              class="px-6 py-3 rounded-full bg-black text-zinc-400 border border-zinc-800 hover:border-aura-green hover:text-white transition-all hover:shadow-[0_0_20px_rgba(76,175,80,0.2)]">Meal
-              Plans</button>
-            <button data-filter="bowls"
-              class="px-6 py-3 rounded-full bg-black text-zinc-400 border border-zinc-800 hover:border-aura-green hover:text-white transition-all hover:shadow-[0_0_20px_rgba(76,175,80,0.2)]">Bowls</button>
+            <button data-filter="Meals"
+              class="px-6 py-3 rounded-full bg-black text-zinc-400 border border-zinc-800 hover:border-aura-green hover:text-white transition-all hover:shadow-[0_0_20px_rgba(76,175,80,0.2)]">Meals</button>
+            <button data-filter="Snacks"
+              class="px-6 py-3 rounded-full bg-black text-zinc-400 border border-zinc-800 hover:border-aura-green hover:text-white transition-all hover:shadow-[0_0_20px_rgba(76,175,80,0.2)]">Snacks</button>
           </div>
         </div>
 
+        
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Food Card 1 -->
-          <div data-category="bowls"
+          <!-- Food Card 1 - Flavoured Makhana Chaat -->
+          <div data-category="Snacks"
             class="food-card reveal group bg-[#0A0A0A] rounded-[2rem] overflow-hidden border border-zinc-900 group md:hover:-translate-y-2 md:hover:border-aura-green/50 hover:shadow-[0_0_40px_rgba(76,175,80,0.15)] transition-all duration-500 flex flex-col">
             <div class="relative overflow-hidden aspect-[4/3]">
-              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80"
-                alt="Healthy Bowl"
+              <img src="/assets/makhana-chaat.jpg"
+                alt="Flavoured Makhana Chaat"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy" />
               <div
-                class="absolute top-4 right-4 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-black shadow-lg border border-white/20">
-                🔥 Popular</div>
+                class="absolute top-4 right-4 bg-aura-green text-black px-3 py-1.5 rounded-full text-xs font-black shadow-lg">
+                🔥 Bestseller</div>
             </div>
             <div class="p-6 flex-1 flex flex-col">
               <div class="flex items-start justify-between mb-3 gap-4">
-                <h3 class="text-xl font-bold font-heading line-clamp-1">Quinoa Protein Bowl</h3>
-                <span class="text-xl font-black text-aura-green">₹349</span>
+                <h3 class="text-xl font-bold font-heading line-clamp-1">Flavoured Makhana Chaat</h3>
+                <span class="text-xl font-black text-aura-green">₹129</span>
               </div>
-              <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2">Fresh quinoa, roasted sweet
-                potatoes, avocado, and perfectly grilled chicken with a lemon-herb dressing.</p>
+              <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2">Mix of crunchy roasted makhana, chopped onions, tomatoes, fresh coriander, and a squeeze of lemon juice.</p>
               <div class="mt-auto flex items-center justify-between">
                 <span
-                  class="bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-slate-400 text-xs px-3 py-1.5 rounded-lg font-bold">450
-                  kcal</span>
+                  class="bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-slate-400 text-xs px-3 py-1.5 rounded-lg font-bold">120 kcal</span>
                 <button
-                  class="w-10 h-10 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black flex items-center justify-center group-hover:bg-aura-green dark:group-hover:bg-aura-green group-hover:text-white transition-colors shadow-lg shadow-black/10"><i
+                  class="coming-soon-trigger w-10 h-10 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black flex items-center justify-center group-hover:bg-aura-green dark:group-hover:bg-aura-green group-hover:text-white transition-colors shadow-lg shadow-black/10"><i
                     data-lucide="plus" class="w-5 h-5"></i></button>
               </div>
             </div>
           </div>
 
-          <!-- Food Card 2 -->
-          <div data-category="meal-plans"
+          <!-- Food Card 2 - Paneer Veg Mix -->
+          <div data-category="Meals"
             class="food-card reveal group bg-[#0A0A0A] rounded-[2rem] overflow-hidden border border-zinc-900 group md:hover:-translate-y-2 md:hover:border-aura-green/50 hover:shadow-[0_0_40px_rgba(76,175,80,0.15)] transition-all duration-500 flex flex-col"
             style="transition-delay: 100ms">
             <div class="relative overflow-hidden aspect-[4/3]">
-              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
-                alt="Pizza" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              <img src="https://plus.unsplash.com/premium_photo-1726783359110-de1b5d04179c?auto=format&fit=crop&w=800&q=80"
+                alt="Paneer Veg Mix" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy" />
             </div>
             <div class="p-6 flex-1 flex flex-col">
               <div class="flex items-start justify-between mb-3 gap-4">
-                <h3 class="text-xl font-bold font-heading line-clamp-1">Farmhouse Gourmet</h3>
-                <span class="text-xl font-black text-aura-green">₹499</span>
+                <h3 class="text-xl font-bold font-heading line-clamp-1">Paneer Veg Mix</h3>
+                <span class="text-xl font-black text-aura-green">₹199</span>
               </div>
-              <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2">Wood-fired crust, organic
-                tomatoes, fresh mozzarella, and a medley of seasonal vegetables.</p>
+              <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2">Golden-seared paneer cubes, sautéed bell peppers, and onions tossed in a rich tomato masala.</p>
               <div class="mt-auto flex items-center justify-between">
                 <span
-                  class="bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-slate-400 text-xs px-3 py-1.5 rounded-lg font-bold">Chef's
-                  Special</span>
+                  class="bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-slate-400 text-xs px-3 py-1.5 rounded-lg font-bold">High Protein</span>
                 <button
-                  class="w-10 h-10 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black flex items-center justify-center group-hover:bg-aura-green dark:group-hover:bg-aura-green group-hover:text-white transition-colors shadow-lg shadow-black/10"><i
+                  class="coming-soon-trigger w-10 h-10 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black flex items-center justify-center group-hover:bg-aura-green dark:group-hover:bg-aura-green group-hover:text-white transition-colors shadow-lg shadow-black/10"><i
                     data-lucide="plus" class="w-5 h-5"></i></button>
               </div>
             </div>
           </div>
 
-          <!-- Food Card 3 -->
-          <div data-category="meal-plans"
+          <!-- Food Card 3 - Fruit Chaat -->
+          <div data-category="Snacks"
             class="food-card reveal group bg-[#0A0A0A] rounded-[2rem] overflow-hidden border border-zinc-900 group md:hover:-translate-y-2 md:hover:border-aura-green/50 hover:shadow-[0_0_40px_rgba(76,175,80,0.15)] transition-all duration-500 flex flex-col"
             style="transition-delay: 200ms">
             <div class="relative overflow-hidden aspect-[4/3]">
-              <img src="https://images.unsplash.com/photo-1481070555726-e2fe83477d15?auto=format&fit=crop&w=800&q=80"
-                alt="Burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              <img src="https://plus.unsplash.com/premium_photo-1689596510917-d337f077d559?auto=format&fit=crop&w=800&q=80"
+                alt="Fruit Chaat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy" />
-              <div
-                class="absolute top-4 right-4 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-black shadow-lg border border-white/20 text-orange-500">
-                Vegan</div>
             </div>
             <div class="p-6 flex-1 flex flex-col">
               <div class="flex items-start justify-between mb-3 gap-4">
-                <h3 class="text-xl font-bold font-heading line-clamp-1">Impossible Truffle Burger</h3>
-                <span class="text-xl font-black text-aura-green">₹399</span>
+                <h3 class="text-xl font-bold font-heading line-clamp-1">Fruit Chaat</h3>
+                <span class="text-xl font-black text-aura-green">₹149</span>
               </div>
-              <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2">Plant-based patty, vegan truffle
-                mayo, caramelized onions, and fresh arugula on a brioche bun.</p>
+              <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2">A colorful mix of fresh apples, oranges, kiwi, and pomegranate seeds tossed with warm spices.</p>
               <div class="mt-auto flex items-center justify-between">
                 <span
-                  class="bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-slate-400 text-xs px-3 py-1.5 rounded-lg font-bold">High
-                  Protein</span>
+                  class="bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-slate-400 text-xs px-3 py-1.5 rounded-lg font-bold">Low Calorie</span>
                 <button
-                  class="w-10 h-10 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black flex items-center justify-center group-hover:bg-aura-green dark:group-hover:bg-aura-green group-hover:text-white transition-colors shadow-lg shadow-black/10"><i
+                  class="coming-soon-trigger w-10 h-10 rounded-full bg-slate-900 text-white dark:bg-white dark:text-black flex items-center justify-center group-hover:bg-aura-green dark:group-hover:bg-aura-green group-hover:text-white transition-colors shadow-lg shadow-black/10"><i
                     data-lucide="plus" class="w-5 h-5"></i></button>
               </div>
             </div>
           </div>
+        </div>
         </div>
 
         <div class="mt-16 text-center reveal">
