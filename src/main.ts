@@ -140,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     let loadedCount = 0;
-    let imagesLoaded = false;
 
     // We use Math.floor for the base frame, and the decimal part for blending
     const drawImageCover = (img: HTMLImageElement, opacity: number) => {
