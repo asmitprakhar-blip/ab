@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+
+<head>
+  <script>document.documentElement.classList.add('dark');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Story - AuraBite | Premium Food Delivery</title>
+    <!-- Icons via Lucide in main.ts -->
+
+
+  
+
+  <style>
+    * { font-family: 'Josefin Sans', sans-serif !important; font-display: swap; }
+    .font-cursive { font-family: 'Caveat', cursive !important; }
+    h1, h2, h3, button, input, textarea { font-family: 'Josefin Sans', sans-serif !important; }
+  </style>
+</head>
+
+<body class="bg-zinc-950 text-slate-100 font-sans overflow-x-hidden transition-colors duration-300">
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/917277775111" target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg shadow-green-500/30 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group"
+        aria-label="Order on WhatsApp">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+        <span
+            class="absolute right-full mr-3 bg-white text-slate-900 font-bold px-3 py-1.5 rounded-lg text-sm shadow opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap dark:bg-zinc-800 dark:text-white">Order
+            on WhatsApp</span>
+    </a>
+
+    <!-- THEME TOGGLE -->
+    
+
+      <!-- NAVBAR -->
+  <nav class="fixed w-full z-40 top-0 transition-all duration-300 py-4 lg:py-4 bg-black/40 backdrop-blur-xl border-b border-white/5 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div class="flex items-center gap-6 md:gap-10">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 group shrink-0">
+          <img src="logo.png" alt="AuraBite" class="w-[50px] h-[50px] md:w-[60px] md:h-[60px] object-contain drop-shadow-lg" />
+          <span class="text-2xl font-bold font-heading tracking-tight text-white drop-shadow-md">
+            Aura<span class="text-aura-green">Bite</span>
+          </span>
+        </a>
+
+        <!-- Location Selector (Desktop only, hidden on mobile) -->
+        <button class="hidden lg:flex items-center gap-2 cursor-pointer group/loc relative location-btn coming-soon-trigger text-left hover:bg-white/5 p-2 rounded-xl transition-colors">
+          <i data-lucide="map-pin" class="w-5 h-5 text-aura-green group-hover/loc:text-aura-green/80 transition-colors"></i>
+          <div class="leading-tight">
+            <div class="text-[10px] text-white/70 uppercase tracking-wider">Deliver to</div>
+            <div class="text-sm font-bold text-white flex items-center gap-1 group-hover/loc:text-green-50 transition-colors">
+              <span class="location-display-text">Getting location...</span> <i data-lucide="chevron-down" class="w-4 h-4 text-white"></i>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <div class="hidden md:flex items-center gap-8 font-medium font-heading">
+        <a href="index.html" class="text-white/90 hover:text-aura-green transition-colors font-bold drop-shadow-sm">Home</a>
+        <a href="menu.html" class="text-white/90 hover:text-aura-green transition-colors font-bold drop-shadow-sm">Menu</a>
+        <a href="plans.html" class="text-white/90 hover:text-aura-green transition-colors font-bold drop-shadow-sm">Plans</a>
+        <a href="index.html#testimonials" class="text-white/90 hover:text-aura-green transition-colors font-bold drop-shadow-sm">Reviews</a>
+        <a href="about.html" class="text-white/90 hover:text-aura-green transition-colors font-bold drop-shadow-sm">About</a>
+        <a href="contact.html" class="text-white/90 hover:text-aura-green transition-colors font-bold drop-shadow-sm">Contact</a>
+      </div>
+
+      <div class="hidden md:flex items-center gap-4 shrink-0">
+        <button class="coming-soon-trigger px-5 py-2.5 rounded-full bg-slate-900 border border-zinc-800 text-white font-bold text-sm hover:bg-slate-800 transition-all cursor-pointer">Sign In</button>
+        <button class="coming-soon-trigger px-6 py-2.5 rounded-full bg-aura-green text-white font-bold text-sm shadow-[0_0_20px_rgba(76,175,80,0.3)] hover:shadow-[0_0_25px_rgba(76,175,80,0.5)] hover:-translate-y-0.5 transition-all flex items-center gap-2 border border-aura-green/50 cursor-pointer">Order Now</button>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-white">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu"
+      class="absolute top-full left-0 w-full bg-zinc-950 shadow-xl border-t border-zinc-800 py-4 px-6 flex flex-col gap-4 font-heading font-medium"
+      style="display: none;">
+      <a href="index.html" class="py-2 border-b border-zinc-800 text-white">Home</a>
+      <a href="menu.html" class="py-2 border-b border-zinc-800 text-white">Menu</a>
+      <a href="about.html" class="py-2 border-b border-zinc-800 text-white">Our Story</a>
+      <a href="index.html#how-it-works" class="py-2 border-b border-zinc-800 text-white">How It Works</a>
+      <a href="plans.html" class="py-2 border-b border-zinc-800 text-white">Plans</a>
+      <a href="index.html#testimonials" class="py-2 border-b border-zinc-800 text-white">Reviews</a>
+      <button class="coming-soon-trigger py-3 mt-2 text-center rounded-xl bg-slate-900 text-white font-bold w-full cursor-pointer">Sign In</button>
+      <button class="coming-soon-trigger py-3 mt-2 text-center rounded-xl bg-aura-green text-white font-bold w-full cursor-pointer">Order Now</button>
+    </div>
+  </nav>
+
+    <main class="pt-32 pb-24 min-h-screen">
+        <section class="container max-w-7xl mx-auto px-4 reveal flex items-center min-h-[85vh]">
+            <div class="grid md:grid-cols-12 gap-12 lg:gap-24 items-center w-full">
+                <!-- Left Image (Smaller) -->
+                <div class="relative w-full md:col-start-2 md:col-span-5 group">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-aura-green/30 to-black rounded-[2rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000">
+                    </div>
+                    <div
+                        class="bg-[#0A0D0A] border-[0.5px] border-zinc-800/80 rounded-2xl md:rounded-[2rem] overflow-hidden aspect-[4/5] relative shadow-[0_0_50px_rgba(0,0,0,0.5)] transform transition-transform group-hover:-translate-y-2 duration-700">
+                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80"
+                            alt="AuraBite premium chef experience"
+                            class="w-full h-full object-cover transform transition-transform group-hover:scale-105 duration-1000 opacity-90"
+                            loading="lazy" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#050B14] via-transparent to-transparent opacity-80">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Text Content -->
+                <div class="space-y-8 reveal md:col-span-6 pr-4 md:pr-10">
+                    <div>
+                        <span class="text-aura-green font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Our
+                            Story</span>
+                        <h2
+                            class="text-4xl md:text-5xl lg:text-[4rem] font-black font-heading mb-6 tracking-tight leading-[1.05] text-white">
+                            Nourishing the body,<br /><span class="text-aura-green italic font-light">delighting the
+                                soul.</span>
+                        </h2>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-[15px] md:text-lg text-slate-300 leading-relaxed font-light">
+                            AuraBite was born from a simple belief: healthy eating shouldn't mean
+                            compromising on taste. We partner with local farmers and expert
+                            nutritionists to craft meals that are as beautiful as they are beneficial.
+                        </p>
+                        <p class="text-[15px] md:text-lg text-slate-300 leading-relaxed font-light">
+                            Every ingredient is hand-selected. Every recipe is meticulously perfected. We bring the
+                            premium restaurant experience directly to your doorstep.
+                        </p>
+                    </div>
+
+                    <div class="pt-8 relative">
+                        <div class="w-full h-px bg-zinc-800 absolute top-0 left-0"></div>
+                        <div class="flex items-center gap-16 mt-8">
+                            <div>
+                                <h4
+                                    class="text-3xl md:text-[2.25rem] font-black font-heading text-white flex items-baseline tracking-tight">
+                                    50k<span class="text-2xl text-aura-green">+</span></h4>
+                                <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 mt-2">Meals
+                                    Served</p>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-3xl md:text-[2.25rem] font-black font-heading text-white tracking-tight">
+                                    4.9</h4>
+                                <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 mt-2">Star
+                                    Rating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#050B14] py-8 relative z-20">
+        <div class="container max-w-7xl mx-auto px-4 text-center">
+            <a href="index.html"
+                class="text-2xl font-heading font-black tracking-tighter text-aura-green block mb-2">Aura<span
+                    class="text-white">Bite</span></a>
+            <p class="text-xs text-slate-500 font-bold">&copy; 2026 AuraBite. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+
+  <!-- NOISE OVERLAY FOR CINEMATIC TEXTURE -->
+  <div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[9999] mix-blend-overlay noise-texture overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+
+  <!-- FLOATING RESERVE BUTTON -->
+  <button
+    class="coming-soon-trigger fixed bottom-6 left-6 z-50 bg-black text-white px-6 py-4 rounded-full border border-zinc-800 shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden active:scale-95"
+    aria-label="Reserve a Table">
+    <div class="absolute inset-x-0 bottom-0 h-0.5 bg-aura-green transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+    <i data-lucide="calendar" class="w-5 h-5 text-aura-green"></i>
+    <span class="font-bold uppercase tracking-widest text-xs">Reserve table</span>
+  </button>
+</body>
+
+</html>
