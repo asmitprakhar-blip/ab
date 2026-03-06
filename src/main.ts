@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("hero-canvas") as HTMLCanvasElement;
   if (canvas) {
     const ctx = canvas.getContext("2d");
-    const frameCount = 80;
+    const frameCount = 40;
     const currentFrame = (index: number) => `/assets/images/Fruits_falling_out_of_bowl_delpmaspu__${String(index).padStart(3, '0')}.jpg`;
 
     const images: HTMLImageElement[] = [];
@@ -170,34 +170,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const render = () => {
-      if (!ctx || images.length === 0 || !imagesLoaded) return;
+      if (!ctx || images.length === 0) return;
 
       const canvasWidth = canvas.width;
       const canvasHeight = canvas.height;
+      const index = Math.floor(sequence.frame);
+      const img = images[index];
 
-      const index = sequence.frame;
-
-      const clampedIndex = Math.max(0, Math.min(index, frameCount - 1));
-      const frameAIndex = Math.floor(clampedIndex);
-      const frameBIndex = Math.min(frameAIndex + 1, frameCount - 1);
-
-      const blend = clampedIndex - frameAIndex; // 0.0 to 1.0
-
-      const imgA = images[frameAIndex];
-      const imgB = images[frameBIndex];
-
-      if (!imgA) return;
-
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-      ctx.save();
-      drawImageCover(imgA, 1);
-      ctx.restore();
-
-      if (frameAIndex !== frameBIndex && imgB) {
-        ctx.save();
-        drawImageCover(imgB, blend);
-        ctx.restore();
+      if (img && img.complete) {
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        drawImageCover(img, 1);
       }
     };
 
@@ -209,11 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       img.onload = () => {
         loadedCount++;
-        if (loadedCount === 1) { // Draw immediately the first one we get
-          imagesLoaded = true;
-          render();
-        }
-        if (loadedCount === frameCount) {
+        if (loadedCount === 1 || i === Math.floor(sequence.frame)) {
           render();
         }
       };
