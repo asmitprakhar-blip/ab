@@ -1,69 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=./menu.html" />
-    <title>AuraBite | Redirecting...</title>
-    <meta name="description" content="AuraBite premium food delivery and wellness-focused menu." />
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #050b14;
-        --text: #f8fafc;
-        --muted: #94a3b8;
-        --accent: #a3e635;
-      }
-      * { box-sizing: border-box; }
-      html, body {
-        margin: 0;
-        min-height: 100%;
-        height: 100%;
-        background: var(--bg);
-        color: var(--text);
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      body {
-        display: grid;
-        place-items: center;
-        text-align: center;
-      }
-      .wrap {
-        padding: 2rem;
-      }
-      .badge {
-        display: inline-block;
-        padding: 0.45rem 0.8rem;
-        border: 1px solid rgba(163, 230, 53, 0.4);
-        border-radius: 999px;
-        color: var(--accent);
-        background: rgba(163, 230, 53, 0.08);
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-size: 0.72rem;
-      }
-      h1 {
-        margin: 1rem 0 0.5rem;
-        font-size: clamp(2rem, 5vw, 4rem);
-        line-height: 1.1;
-      }
-      p {
-        margin: 0;
-        color: var(--muted);
-      }
-      a {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 700;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+
+    <!-- SEO & Title -->
+    <title>AuraBite - Care In Every Bite</title>
+    <meta name="description" content="AuraBite interactive QR experience. Scan, Tap, Unlock More! Startup funding, Confess your crush, House parties & Blind dates." />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AuraBite - Care In Every Bite" />
+    <meta property="og:description" content="Scan, tap, and unlock exclusive experiences. Startup summit, blind dates, house parties & confess your crush." />
+    <meta property="og:site_name" content="AuraBite" />
+    <meta name="theme-color" content="#12372A" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍃</text></svg>" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="wrap">
-      <div class="badge">AuraBite</div>
-      <h1>Redirecting to the homepage...</h1>
-      <p>If you are not redirected automatically, <a href="./menu.html">click here</a>.</p>
-    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
