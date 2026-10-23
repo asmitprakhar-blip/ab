@@ -2,26 +2,813 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
-    <meta name="description" content="AuraBite interactive QR experience. Scan, Tap, Unlock More! Startup funding, Confess your crush, House parties & Blind dates." />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="AuraBite - Care In Every Bite" />
-    <meta property="og:description" content="Scan, tap, and unlock exclusive experiences. Startup summit, blind dates, house parties & confess your crush." />
-    <meta property="og:site_name" content="AuraBite" />
-    <meta name="theme-color" content="#12372A" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍃</text></svg>" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>AuraBite - Care In Every Bite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AuraBite — premium food delivery and wellness-first meals." />
+    <title>AuraBite | Premium Food Delivery</title>
+    <style>
+      :root {
+        --bg: #070b0a;
+        --bg-2: #0d1b17;
+        --panel: rgba(18, 28, 24, 0.78);
+        --panel-strong: rgba(20, 32, 28, 0.95);
+        --green: #72d39e;
+        --green-2: #4fc98c;
+        --green-3: #a7f3c4;
+        --cream: #eaf6ef;
+        --muted: #a9c4b1;
+        --gold: #f3c96b;
+        --card: rgba(255,255,255,0.03);
+        --line: rgba(255,255,255,0.08);
+        --shadow: 0 25px 80px rgba(7, 11, 10, 0.55);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 15% 15%, rgba(125, 196, 147, 0.12), transparent 22%),
+          radial-gradient(circle at 85% 10%, rgba(243, 201, 107, 0.08), transparent 18%),
+          linear-gradient(180deg, var(--bg) 0%, #0a130f 100%);
+        color: var(--cream);
+      }
+
+      a { color: inherit; text-decoration: none; }
+
+      .page-shell {
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: rgba(7, 11, 10, 0.38);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(114,211,158,0.18), rgba(243,201,107,0.18));
+        border: 1px solid rgba(255,255,255,0.08);
+        font-size: 20px;
+      }
+
+      .brand span {
+        display: block;
+        font-size: 0.92rem;
+        color: var(--muted);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover { color: var(--cream); }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .link-btn,
+      .primary-btn,
+      .ghost-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0.9rem 1.35rem;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .ghost-btn {
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.02);
+      }
+
+      .primary-btn {
+        background: linear-gradient(135deg, var(--green), var(--green-2));
+        color: #0b1a12;
+        box-shadow: 0 18px 36px rgba(79, 201, 140, 0.28);
+      }
+
+      .primary-btn:hover,
+      .ghost-btn:hover,
+      .link-btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        position: relative;
+        padding: 80px 0 40px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 44px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        color: var(--green-3);
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3rem, 6vw, 5.2rem);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+      }
+
+      .hero-copy p {
+        margin: 22px 0 28px;
+        font-size: 1.1rem;
+        line-height: 1.75;
+        color: var(--muted);
+        max-width: 620px;
+      }
+
+      .action-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .mini-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        color: var(--muted);
+      }
+
+      .mini-stats strong {
+        display: block;
+        font-size: 1.7rem;
+        color: var(--cream);
+        margin-bottom: 4px;
+      }
+
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .visual-wrap {
+        position: relative;
+        width: min(560px, 100%);
+        aspect-ratio: 1 / 1;
+        display: grid;
+        place-items: center;
+      }
+
+      .glow-orb {
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(114,211,158,0.22), rgba(114,211,158,0.05) 42%, transparent 68%);
+        filter: blur(28px);
+      }
+
+      .bowl-scene {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+      }
+
+      .bowl {
+        position: absolute;
+        bottom: 46px;
+        width: 320px;
+        height: 160px;
+        border-radius: 55% 55% 44% 44% / 70% 70% 24% 24%;
+        background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(245, 245, 245, 0.06));
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: inset 0 24px 42px rgba(255,255,255,0.08), inset 0 -18px 28px rgba(0,0,0,0.18), 0 30px 50px rgba(0,0,0,0.32);
+      }
+
+      .bowl::before {
+        content: "";
+        position: absolute;
+        inset: 18px 22px 18px 22px;
+        border-radius: 50% 50% 48% 48% / 70% 70% 30% 30%;
+        background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+      }
+
+      #fruitCanvas {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: block;
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
+      }
+
+      .feature-strip {
+        padding: 26px 0 12px;
+      }
+
+      .feature-boxes {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 10px;
+      }
+
+      .feature-box {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px 18px;
+      }
+
+      .feature-box .icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 12px;
+        font-size: 1.3rem;
+        background: linear-gradient(135deg, rgba(114,211,158,0.18), rgba(243,201,107,0.12));
+      }
+
+      .feature-box h3 {
+        margin: 0 0 8px;
+        font-size: 1.04rem;
+      }
+
+      .feature-box p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: clamp(2.1rem, 4vw, 3.2rem);
+        letter-spacing: -0.05em;
+      }
+
+      .section-copy {
+        margin: 0;
+        max-width: 540px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .food-card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .food-card .image {
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .food-card .body {
+        padding: 22px 22px 26px;
+      }
+
+      .food-card .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 10px;
+      }
+
+      .pill {
+        background: rgba(114,211,158,0.12);
+        color: var(--green-3);
+        font-size: 0.72rem;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(114,211,158,0.18);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .price {
+        font-weight: 800;
+        font-size: 1.35rem;
+      }
+
+      .food-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.38rem;
+      }
+
+      .food-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .plan-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .plan-card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 28px 22px;
+      }
+
+      .plan-card.featured {
+        background: linear-gradient(180deg, rgba(114,211,158,0.09), rgba(255,255,255,0.02));
+        border-color: rgba(114,211,158,0.35);
+      }
+
+      .plan-card h3 {
+        margin: 0 0 16px;
+        font-size: 1.5rem;
+      }
+
+      .plan-price {
+        font-size: 2.3rem;
+        margin-bottom: 16px;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+      }
+
+      .plan-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 22px;
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+      }
+
+      .plan-card li::before {
+        content: "✓";
+        color: var(--green-3);
+        margin-right: 10px;
+      }
+
+      .cta-band {
+        background: linear-gradient(135deg, rgba(114,211,158,0.09), rgba(243,201,107,0.06));
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 30px;
+        padding: 28px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .cta-band h3 {
+        margin: 0;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        letter-spacing: -0.04em;
+      }
+
+      .footer {
+        padding: 40px 0 60px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .menu-grid,
+        .plan-row,
+        .feature-boxes {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 52px;
+        }
+
+        .cta-band {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="container nav">
+          <a href="#" class="brand" aria-label="AuraBite home">
+            <span class="brand-mark">🍃</span>
+            <div>
+              AuraBite
+              <span>care in every bite</span>
+            </div>
+          </a>
+
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#plans">Plans</a>
+            <a href="#about">About</a>
+          </nav>
+
+          <div class="nav-actions">
+            <a href="#menu" class="ghost-btn">View Menu</a>
+            <a href="#plans" class="primary-btn">Order Now</a>
+          </div>
+        </div>
+      </header>
+
+      <main id="home">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <div class="eyebrow">Fresh • Crafted • Delivered</div>
+              <h1>Good food for a happier routine.</h1>
+              <p>
+                Build stronger habits with clean, chef-crafted meals made for energy, focus, and everyday joy.
+                Fresh ingredients, smart nutrition, and lightning-fast delivery — all in one simple ritual.
+              </p>
+
+              <div class="action-row">
+                <a href="#plans" class="primary-btn">Start Your Plan</a>
+                <a href="#menu" class="ghost-btn">Explore Menu</a>
+              </div>
+
+              <div class="mini-stats">
+                <div>
+                  <strong>10k+</strong>
+                  happy meals
+                </div>
+                <div>
+                  <strong>25 min</strong>
+                  avg. delivery
+                </div>
+                <div>
+                  <strong>4.9/5</strong>
+                  customer rating
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Fruit animation scene">
+              <div class="visual-wrap">
+                <div class="glow-orb"></div>
+                <div class="bowl-scene">
+                  <div class="bowl" aria-hidden="true"></div>
+                  <canvas id="fruitCanvas" width="520" height="520"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-strip">
+          <div class="container">
+            <div class="feature-boxes">
+              <div class="feature-box">
+                <div class="icon">🥗</div>
+                <h3>Chef-curated</h3>
+                <p>Balanced meals designed to taste great and feel even better.</p>
+              </div>
+              <div class="feature-box">
+                <div class="icon">⚡</div>
+                <h3>Fast delivery</h3>
+                <p>Freshly prepared and delivered when you need it most.</p>
+              </div>
+              <div class="feature-box">
+                <div class="icon">🌿</div>
+                <h3>Clean ingredients</h3>
+                <p>Thoughtful sourcing, no heavy ingredients, no compromise.</p>
+              </div>
+              <div class="feature-box">
+                <div class="icon">💚</div>
+                <h3>Built for routines</h3>
+                <p>Flexible plans for busy days, recovery, and everyday wellness.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="menu">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">Popular Picks</div>
+                <h2 class="section-title">Your next favorite bowl.</h2>
+              </div>
+              <p class="section-copy">
+                From bright salads to protein-rich comfort bowls, every menu item is built to feel fresh, satisfying, and easy to love.
+              </p>
+            </div>
+
+            <div class="menu-grid">
+              <article class="food-card">
+                <div class="image" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.08), rgba(0,0,0,0.12)), url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80');"></div>
+                <div class="body">
+                  <div class="meta">
+                    <span class="pill">Protein</span>
+                    <span class="price">₹399</span>
+                  </div>
+                  <h3>Green Glow Bowl</h3>
+                  <p>Avocado, quinoa, greens, citrus crunch, and herb dressing for a light but filling lift.</p>
+                </div>
+              </article>
+
+              <article class="food-card">
+                <div class="image" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.08), rgba(0,0,0,0.12)), url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80');"></div>
+                <div class="body">
+                  <div class="meta">
+                    <span class="pill">Veg</span>
+                    <span class="price">₹349</span>
+                  </div>
+                  <h3>Garden Harvest</h3>
+                  <p>Roasted veggies, warm grains, crunchy greens, and a lemon-herb finish made to glow.</p>
+                </div>
+              </article>
+
+              <article class="food-card">
+                <div class="image" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.08), rgba(0,0,0,0.12)), url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=80');"></div>
+                <div class="body">
+                  <div class="meta">
+                    <span class="pill">Chef special</span>
+                    <span class="price">₹449</span>
+                  </div>
+                  <h3>Sunset Power Plate</h3>
+                  <p>Sweet potato, grilled tofu, seeds, and vibrant toppings with a smoky citrus drizzle.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="plans">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">Flexible Plans</div>
+                <h2 class="section-title">Choose your rhythm.</h2>
+              </div>
+              <p class="section-copy">
+                Get meals that fit your schedule, your goals, and your appetite without overthinking the plan.
+              </p>
+            </div>
+
+            <div class="plan-row">
+              <article class="plan-card">
+                <h3>Starter</h3>
+                <div class="plan-price">₹799</div>
+                <ul>
+                  <li>3 fresh meals / week</li>
+                  <li>One free snack add-on</li>
+                  <li>Free delivery</li>
+                </ul>
+                <a href="#" class="ghost-btn">Get Started</a>
+              </article>
+
+              <article class="plan-card featured">
+                <h3>Signature</h3>
+                <div class="plan-price">₹1499</div>
+                <ul>
+                  <li>5 premium meals / week</li>
+                  <li>Custom nutrition focus</li>
+                  <li>Priority delivery</li>
+                </ul>
+                <a href="#" class="primary-btn">Most Popular</a>
+              </article>
+
+              <article class="plan-card">
+                <h3>Unlimited</h3>
+                <div class="plan-price">₹2499</div>
+                <ul>
+                  <li>Daily meal access</li>
+                  <li>Chef recommendations</li>
+                  <li>VIP support</li>
+                </ul>
+                <a href="#" class="ghost-btn">Go Premium</a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="about">
+          <div class="container">
+            <div class="cta-band">
+              <h3>Fresh meals, better days, fewer decisions.</h3>
+              <a href="#plans" class="primary-btn">Build My Box</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+          <div>© 2026 AuraBite</div>
+          <div style="color: var(--muted);">Care in every bite.</div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const canvas = document.getElementById('fruitCanvas');
+      const ctx = canvas.getContext('2d');
+      const bowlRadius = 150;
+      const fruits = [];
+      const fruitColors = ['#f7a35c', '#f05d59', '#e5d36f', '#4ec57d', '#ff7c7c', '#f2c94c'];
+
+      function resizeCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function spawnFruit() {
+        const radius = 12 + Math.random() * 16;
+        const xBase = canvas.width / 2;
+        const x = xBase + (Math.random() - 0.5) * 160;
+        const y = canvas.height * 0.1;
+        const color = fruitColors[Math.floor(Math.random() * fruitColors.length)];
+
+        return {
+          x,
+          y,
+          radius,
+          color,
+          vy: 0.8 + Math.random() * 1.7,
+          vx: (Math.random() - 0.5) * 0.9,
+          rotation: Math.random() * Math.PI,
+          spin: (Math.random() - 0.5) * 0.1,
+          wobble: Math.random() * Math.PI * 2,
+          startY: y
+        };
+      }
+
+      function populate() {
+        fruits.length = 0;
+        for (let i = 0; i < 22; i++) {
+          fruits.push(spawnFruit());
+        }
+      }
+
+      function drawFruit(fruit) {
+        const x = fruit.x;
+        const y = fruit.y;
+        const r = fruit.radius;
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(fruit.rotation);
+
+        ctx.beginPath();
+        ctx.fillStyle = fruit.color;
+        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255,255,255,0.18)';
+        ctx.arc(-r * 0.25, -r * 0.25, r * 0.26, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(0,0,0,0.12)';
+        ctx.arc(0, 0, r * 0.7, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      function drawBowl() {
+        const cx = canvas.width / 2;
+        const cy = canvas.height * 0.78;
+        const radius = bowlRadius;
+
+        ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.fillStyle = 'rgba(255,255,255,0.10)';
+        ctx.strokeStyle = 'rgba(255,255,255,0.24)';
+        ctx.moveTo(cx - radius, cy);
+        ctx.quadraticCurveTo(cx - radius * 0.7, cy + 28, cx, cy + 18);
+        ctx.quadraticCurveTo(cx + radius * 0.7, cy + 28, cx + radius, cy);
+        ctx.lineTo(cx + radius, cy + 26);
+        ctx.quadraticCurveTo(cx, cy + 62, cx - radius, cy + 26);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawBowl();
+
+        for (const fruit of fruits) {
+          fruit.vy += 0.015;
+          fruit.x += fruit.vx;
+          fruit.y += fruit.vy;
+          fruit.rotation += fruit.spin;
+
+          const cx = canvas.width / 2;
+          const orbit = Math.sin(fruit.wobble += 0.03) * 18;
+          fruit.x += orbit * 0.03;
+
+          if (fruit.y > canvas.height * 0.76 && fruit.x > cx - 150 && fruit.x < cx + 150) {
+            fruit.y = canvas.height * 0.08;
+            fruit.x = cx + (Math.random() - 0.5) * 180;
+            fruit.vy = 0.9 + Math.random() * 1.6;
+            fruit.vx = (Math.random() - 0.5) * 1.4;
+          }
+
+          if (fruit.x < 0 || fruit.x > canvas.width) {
+            fruit.x = canvas.width / 2 + (Math.random() - 0.5) * 180;
+          }
+
+          drawFruit(fruit);
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      resizeCanvas();
+      populate();
+      requestAnimationFrame(animate);
+      window.addEventListener('resize', resizeCanvas);
+    </script>
   </body>
 </html>
